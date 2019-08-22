@@ -1,0 +1,441 @@
+//console.log("Hello");
+// var a=4;
+// var b="hello";
+// console.log(a);
+// console.log(a+b);
+// console.log(a,b);
+///////////////////////////////////////////
+/*
+for(var i=0;i<=5;i++)
+  {
+    console.log(i);
+  }
+console.log(i);
+*/
+
+/////////////////////////////////////////
+
+
+function test(a)
+{
+  //console.log(a);
+}
+
+test();/////will print undefined as default value of a will be printed which is 'undefined'
+test("hello");// will print hello
+
+
+///////////////////////////////////////////
+
+function test(a)
+{
+  //console.log(a);
+}
+
+//console.log(test("hello"));// since function is not returning anything, console will print 'undefined'
+
+
+/////////////////////////////////////////////////
+
+
+
+function test(a)
+{
+  //console.log(a);
+  return "function retunred";
+}
+
+//console.log(test("hello"));// since function is not returning anything, console will print 'undefined'
+
+
+
+/////////////////////////////////////////////////////
+
+function backup()
+{
+  console.log("backup");
+}
+
+function erase()
+{
+  console.log("erase");
+}
+function print()
+{
+  console.log("print");
+}
+
+
+//console.log(backup);// will print address of the function
+mapper=[backup,erase,print];// array created
+//console.log(mapper.length);// .length is an attribute of object class
+
+for (var i=0; i<mapper.length;i++)
+  {
+    //mapper[i]();   // backup() will be called
+  }
+
+
+//////////////////////////////////////////
+
+
+function backup()
+{
+  console.log("backup");
+}
+
+function erase()
+{
+  console.log("erase");
+}
+function print()
+{
+  console.log("print");
+}
+
+
+mapper={
+  'name':'superman',
+  'age':50,
+  'ismarried':false,
+  'fly':backup
+  
+}//object created
+
+//console.log(mapper['name']);
+//mapper['fly']();
+
+
+////////////////////////////////////////////
+
+
+mapper={
+  'name':'superman',
+  'age':50,
+  'ismarried':false,
+  'fly':backup,
+  'address':[
+    
+    {
+      'street':'xyz',
+      'pincode':4588
+    }
+    ,
+    {
+      'street':'abc',
+      'pincode':4589
+    }
+    ,
+    {
+      'street':'ghj',
+      'pincode':4586
+    }
+    
+    
+  ]
+  
+}//object created
+
+
+//console.log(mapper['address'][1]['pincode']);
+//console.log(mapper.address[1]['pincode']);
+
+
+///////////////////////////////////////////////////
+
+result=square(3);  //function is declared after it is called but still it will work , this is known as hoisting
+//console.log(result);
+
+function square(x)
+{
+  return x*x;
+}
+
+
+
+
+xyz=function(x)
+{
+  return x*x;
+}
+
+output=xyz(2)// here hoisting wont work for anonymous functions
+//console.log("anonymus function "+output);
+
+------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+// with let keyword scope of a variable is limited
+for(let i=0;i<=5;i++)
+  {
+    //console.log(i);
+  }
+//console.log(i);
+
+
+////////////////////////////////////////////
+
+const i=1;
+i=2;
+//console.log(i);
+
+//////////////////////////////////////////
+
+str="hello";
+str[0]="F";
+console.log(str);
+
+
+////////////////////////////////////////
+
+const customer ={
+  'name' : 'ironman'
+}
+customer ['age']=25;////it works as we are changing items inside customer object which means customer address remains same
+
+
+customer={
+  'age':25,
+  'name':'ironman'
+}// this will not work as we are trying to change the address to customer object
+
+
+
+////////////////////////////// return is required if we have put {}, we put {} if we have to write multiple lines
+const square=(x)=>
+{
+  y=x*x
+  return y;
+}
+result=square(2);
+console.log(result);
+
+
+/////////////////////////////
+const add = (x,y) => x+y;
+
+console.log(add(1,2));
+
+
+//////////////////////////////////////////////
+
+arr=[1,2,3,4,5,6];
+
+function square(x)
+{
+  return x*x;
+}
+result=arr.map(square);
+//console.log(result);
+
+
+////////////////////////////////////////////////
+
+arr=[
+  {'name':'superman'},
+  {'name':'batman'},
+  {'name':'notAman'}
+  
+  ]
+
+function appenedsurname(x)
+{
+  return {
+   name : x.name+'jain'
+  }
+}
+
+result=arr.map(appenedsurname);
+//console.log(result);
+
+/////////////////////////////////////////////
+
+arr=[
+  {'name':'superman',
+  age:50},
+  {'name':'batman',
+  age:40},
+  {'name':'notAman',
+  age:30}
+  
+  ]
+
+function appenedsurname(x)
+{
+  return {
+   name : x.name+'jain'
+  }
+}
+
+function check(x)
+{
+  if(x.name=='superman')
+    return true;
+    else
+      return false;
+}
+
+filterdata=arr.filter(check)
+console.log(filterdata);// will print only filtered array
+
+
+function appenedage(x)
+{
+  return {
+   age : x.age +10
+    //name :x.name
+  }
+}
+
+
+function appenedagewithkeepingexistingattributes(x)
+{
+  return {
+    ...x,// will bring all attribues of an object, this is known as SPREADING
+   age : x.age +10
+    
+  }
+}
+
+resultagewithoutallfields=filterdata.map(appenedage);
+console.log(resultagewithoutallfields);
+
+resultage=filterdata.map(appenedagewithkeepingexistingattributes);
+console.log(resultage);
+
+
+
+////////////////////////////////////////////////
+
+//destructuring
+
+arr=[1,2,3,4,5,6];
+a=arr[0];
+b=arr[1];
+//console.log(a);
+//console.log(b);
+
+// or we can do this way also
+
+arr1=[1,2,3,4,5,6];
+const[a1,b1]=arr1;
+console.log(a1);
+console.log(b1);
+
+
+arr2=[...arr1];
+console.log(arr2);
+
+
+////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
